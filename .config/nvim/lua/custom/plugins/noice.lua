@@ -3,6 +3,9 @@ return {
   event = 'VeryLazy',
   opts = {
     -- add any options here
+    notify = {
+      enabled = false,
+    },
   },
   dependencies = {
     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries

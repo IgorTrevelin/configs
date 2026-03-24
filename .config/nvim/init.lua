@@ -3,7 +3,7 @@
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
 =====================================================================
-========                                    .-----.          ========
+=======                                    .-----.          ========
 ========         .----------------------.   | === |          ========
 ========         |.-""""""""""""""""""-.|   |-----|          ========
 ========         ||                    ||   | === |          ========
@@ -393,7 +393,11 @@ require('lazy').setup({
         --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
         --   },
         -- },
-        -- pickers = {}
+        pickers = {
+          find_files = {
+            hidden = true,
+          },
+        },
         extensions = {
           ['ui-select'] = { require('telescope.themes').get_dropdown() },
         },
@@ -853,7 +857,17 @@ require('lazy').setup({
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
-      require('mini.surround').setup()
+      require('mini.surround').setup {
+        mappings = {
+          add = 'sa', -- was 's' + motion
+          delete = 'sd',
+          find = 'sf',
+          find_left = 'sF',
+          highlight = 'sh',
+          replace = 'sr',
+          update_n_lines = 'sn',
+        },
+      }
 
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
@@ -920,14 +934,15 @@ require('lazy').setup({
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   require 'custom.plugins.noice',
-  require 'custom.plugins.toggleterm',
   require 'custom.plugins.text-objects',
   require 'custom.plugins.vim-tmux-navigator',
   require 'custom.plugins.indent-blankline',
-  require 'custom.plugins.opencode',
   require 'custom.plugins.visual-multi',
   require 'custom.plugins.lazygit',
   require 'custom.plugins.venv-selector',
+  require 'custom.plugins.dadbod-ui',
+  require 'custom.plugins.blink-cmp',
+  require 'custom.plugins.iron',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommended keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
@@ -987,3 +1002,4 @@ vim.keymap.set({ 'n', 'x', 'o' }, 'L', '$', { desc = 'Go to end of line' })
 vim.keymap.set('n', '<leader>rr', '<cmd>redraw!<cr>', { desc = 'Redraw screen' })
 vim.api.nvim_set_hl(0, 'NotifyBackground', { bg = '#000000' })
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = true })
+vim.keymap.del('n', 's')
