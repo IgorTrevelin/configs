@@ -612,6 +612,25 @@ require('lazy').setup({
         yamlls = {},
         jsonls = {},
         marksman = {},
+        bashls = {
+          filetypes = { 'sh', 'bash' },
+
+          -- Optional: pass settings to the language server
+          settings = {
+            bashIde = {
+              globPattern = '*@(.sh|.inc|.bash|.command)',
+            },
+          },
+
+          -- Optional: attach custom keymaps on LSP attach
+          on_attach = function(client, bufnr)
+            local opts = { noremap = true, silent = true, buffer = bufnr }
+            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+            vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+            vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+            vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+          end,
+        },
         -- rust_analyzer = {},
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -943,6 +962,7 @@ require('lazy').setup({
   require 'custom.plugins.dadbod-ui',
   require 'custom.plugins.blink-cmp',
   require 'custom.plugins.iron',
+  require 'custom.plugins.vimbegood',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommended keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
