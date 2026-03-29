@@ -2,10 +2,13 @@ return {
   'mg979/vim-visual-multi',
   branch = 'master',
   init = function()
-    -- optional: configure before plugin loads
+    -- init.lua (Lua config)
     vim.g.VM_maps = {
-      ['Find Under'] = '<C-n>', -- start multicursor on word
-      ['Find Subword Under'] = '<C-n>',
+      ['Find Under'] = '<C-n>', -- keep default
+      -- ['Cursor Down'] = 'J',
+      -- ['Cursor Up'] = 'K',
+      -- ['Cursor Left'] = 'H',
+      -- ['Cursor Right'] = 'L',
     }
   end,
 }

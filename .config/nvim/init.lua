@@ -913,7 +913,7 @@ require('lazy').setup({
     branch = 'main',
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter-intro`
     config = function()
-      local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
+      local parsers = { 'python', 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
       require('nvim-treesitter').install(parsers)
       vim.api.nvim_create_autocmd('FileType', {
         callback = function(args)
@@ -929,8 +929,8 @@ require('lazy').setup({
 
           -- enables treesitter based folds
           -- for more info on folds see `:help folds`
-          -- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-          -- vim.wo.foldmethod = 'expr'
+          vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+          vim.wo.foldmethod = 'expr'
 
           -- enables treesitter based indentation
           vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
@@ -1023,3 +1023,4 @@ vim.keymap.set('n', '<leader>rr', '<cmd>redraw!<cr>', { desc = 'Redraw screen' }
 vim.api.nvim_set_hl(0, 'NotifyBackground', { bg = '#000000' })
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = true })
 vim.keymap.del('n', 's')
+vim.keymap.set('n', '<Tab>', 'zA', { desc = 'Toggle fold recursively' })
