@@ -956,7 +956,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
-  require 'kickstart.plugins.neo-tree',
+  -- require 'kickstart.plugins.neo-tree',
   require 'custom.plugins.noice',
   require 'custom.plugins.text-objects',
   require 'custom.plugins.vim-tmux-navigator',
@@ -968,6 +968,7 @@ require('lazy').setup({
   require 'custom.plugins.blink-cmp',
   require 'custom.plugins.iron',
   require 'custom.plugins.vimbegood',
+  require 'custom.plugins.oil',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommended keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
