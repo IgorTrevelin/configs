@@ -1,5 +1,8 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "plugin": [
+    "opencode-claude-auth"
+  ],
   "provider": {
     "lmstudio": {
       "npm": "@ai-sdk/openai-compatible",
